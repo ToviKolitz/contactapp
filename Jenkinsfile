@@ -4,7 +4,7 @@ pipeline{
         stage ("pull"){
             steps {
                 echo "-------pull from git---------"
-                sh 'git pull'
+                sh 'git pull origin master'
             }
         }
         stage('Build'){
