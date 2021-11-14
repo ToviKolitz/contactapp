@@ -4,7 +4,7 @@ pipeline{
         stage ("pull"){
             steps {
                 echo "-------pull from git---------"
-                git pull
+                sh 'git pull'
             }
         }
         stage('Build'){
