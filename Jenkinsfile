@@ -4,7 +4,6 @@ pipeline{
         stage ("pull"){
             steps {
                 echo "-------pull from git---------"
-                checkout scm
                 git pull
             }
         }
