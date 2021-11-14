@@ -5,6 +5,7 @@ pipeline{
             steps {
                 echo "-------pull from git---------"
                 checkout scm
+                git pull
             }
         }
         stage('Build'){
@@ -15,7 +16,6 @@ pipeline{
         stage('Unit test'){
             steps {
                 sh '''
-
                     chmod +x ./wait-for-docker-compose.sh
                     ./wait-for-docker-compose.sh 60
                  
