@@ -5,7 +5,7 @@ import sys, os
 myPath = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, myPath + '/../')
 
-from server import app_factory
+from server import app
 
 
 # Test DELETE method - delete contact succesfully
