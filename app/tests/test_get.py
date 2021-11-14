@@ -32,7 +32,7 @@ def test_get2_method_succes(test_client):
     response = test_client.get('/person/1')
     assert response.status_code == 200
     data = json.loads(response.data)
-    assert "Yisca Kablan" in  data['name']
+    assert "tovi klein" in  data['name']
 
 
 # Test GET method - get person with specific id - FAIL
