@@ -1,0 +1,38 @@
+version: '3'
+services:
+    mongodb:
+        image: bitnami/mongodb:latest
+        container_name: mongodb
+        restart: unless-stopped
+        environment:
+          - MONGODB_DATABASE=contactdb
+          - MONGODB_USERNAME=admin
+          - MONGODB_PASSWORD=password
+          - MONGODB_ROOT_PASSWORD=other
+        volumes:
+        #- ./DB/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+          - 'mongodb_data:/bitnami/mongodb'
+
+    flask:
+        build: app/.
+        image: server:1.0
+        container_name: flask
+        environment:
+            APP_ENV: test
+            APP_DEBUG: "True"
+            APP_PORT: 5000
+            MONGO_DBNAME: contactdb
+            MONGODB_USERNAME: admin
+            MONGODB_PASSWORD: password
+            MONGODB_HOSTNAME: mongodb
+            MONGODB_URL_SUFFIX: authSource=contactdb
+            SECRET_KEY: test
+        volumes:
+        - appdata:/var/www
+        depends_on:
+        - mongodb
+        ports:
+          - "5000:5000"
+volumes:
+    mongodb_data:
+    appdata:
