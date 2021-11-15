@@ -3,7 +3,7 @@ pipeline{
     stages{
         stage ("pull"){
             steps {
-                echo "-------pull from git---------"
+                echo "-------pull from git-------"
             }
         }
         stage('Build'){
