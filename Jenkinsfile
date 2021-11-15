@@ -9,7 +9,7 @@ pipeline{
         }
         stage('Build'){
             steps{
-                sh ' docker-compose up --build -d'
+                sh ' docker-compose -p project up --build -d'
             }
         }
         stage('Unit test'){
