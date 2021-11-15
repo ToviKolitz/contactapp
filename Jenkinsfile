@@ -25,5 +25,15 @@ pipeline{
                  '''
             }
         }
+                stage('E2E test'){
+            steps {
+                sh '''
+
+                    chmod +x ./e2e-test.sh
+                    ./e2e-test.sh
+
+                 '''
+            }
+        }
     }
 }
