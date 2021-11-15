@@ -4,7 +4,7 @@ pipeline{
         stage ("pull"){
             steps {
                 echo "-------pull from git---------"
-                sh 'git pull origin master'
+                sh 'git pull'
             }
         }
         stage('Build'){
@@ -25,7 +25,7 @@ pipeline{
                  '''
             }
         }
-                stage('E2E test'){
+        stage('E2E test'){
             steps {
                 sh '''
 
@@ -33,6 +33,14 @@ pipeline{
                     ./e2e-test.sh
 
                  '''
+            }
+        }
+        stage('Tag and Publish'){
+            steps{
+                sh '''
+                    chmod +x tag.sh
+                    ./tag.sh
+                '''
             }
         }
     }
