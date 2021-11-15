@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # add credHelpers 
+aws configure set aws_access_key_id AKIAYJCRSQ3QSJOMG7XI
+aws configure set aws_secret_access_key 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
 aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 569254250209.dkr.ecr.us-east-2.amazonaws.com
 
 if [ "$BRANCH_NAME" = "master" ]; then
