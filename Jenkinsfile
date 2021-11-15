@@ -52,7 +52,7 @@ pipeline{
             emailext (
                 subject: "Status of  ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} ",
                 body: """ Tests input in the atteched file.\nFor more information, check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME}</a>""",
-                to: "sk0533461282@gmail.com", 
+                to: "sk0533146128@gmail.com", 
                 from: "tovikolitz@gmail.com",
                 attachLog: true, attachmentsPattern: 'testResult.txt'
             )
