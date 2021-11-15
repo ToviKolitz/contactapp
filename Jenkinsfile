@@ -43,4 +43,19 @@ pipeline{
             }
         }
     }
+    post{
+        cleanup{
+            sh '''
+                chmod +x cleanUp.sh
+                ./cleanUp.sh
+            '''
+            emailext (
+                subject: "Status of  ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} ",
+                body: """ Tests input in the atteched file.\nFor more information, check console output at <a href="${env.BUILD_URL}">${env.JOB_NAME}</a>""",
+                to: "tovikolitz@gmail.com", 
+                from: "sk0533461282@gmail.com",
+                attachLog: true, attachmentsPattern: 'testResult.txt'
+            )
+        }
+    }
 }
