@@ -30,8 +30,8 @@ def create_app(test_config=None):
 
     mongo_uri = "mongodb://"+mongodb["username"]+":"+mongodb["password"]+"@"+mongodb["hostname"]+":27017/contactdb?"+mongodb["urlsuffix"]
     #mongo_uri = "mongodb://admin:password@mongodb:27017/contactdb?authSource=contactdb"
-    os.environ['MONGOURI'] = mongo_uri
-
+    #os.environ['MONGOURI'] = mongo_uri
+    logger.info(mongo_uri)
     app.config.from_mapping(
         SECRET_KEY=secret_key,
         MONGO_DBNAME = mongodb["dbname"],
