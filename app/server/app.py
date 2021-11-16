@@ -63,7 +63,7 @@ def create_app(test_config=None):
             return jsonify(message="Contact with such ID already exist.")
         contact_db.insert_one({'id': id, 'name': request.json['name'], 'number':request.json['number'], 'city': request.json['city']})
         logging.info("Succesfully added new contact: " + id )
-        return jsonify(message="New contact added succesfully!")
+        return jsonify(message="New contact added succesfully!!")
 
     """ Update an existing contact """
     @app.route('/person/<string:id>', methods=['PUT'])
