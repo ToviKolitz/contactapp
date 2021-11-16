@@ -28,7 +28,7 @@ def create_app(test_config=None):
     mongodb["urlsuffix"] = os.environ.get("MONGODB_URL_SUFFIX")
     mongodb["dbname"] = os.environ.get("contactdb")
 
-    mongo_uri = "mongodb://"+mongodb["username"]+":"+mongodb["password"]+"@"+mongodb["hostname"]+":27017/contactdb?"+mongodb["urlsuffix"]
+    mongo_uri = '"mongodb://"+mongodb["username"]+":"+mongodb["password"]+"@"+mongodb["hostname"]+":27017/contactdb?"+mongodb["urlsuffix"]'
     #mongo_uri = "mongodb://admin:password@mongodb:27017/contactdb?authSource=contactdb"
     #os.environ['MONGOURI'] = mongo_uri
     logger.info(mongo_uri)
