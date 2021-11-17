@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # remove credHelpers
-isConfFileExist=$(ls /root/.docker | grep "config.json")
+isConfFileExist=$(sudo ls /root/.docker | grep "config.json")
 if [[ ! -z "$isConfFileExist" ]]; then
     sudo rm /root/.docker/config.json
 fi
