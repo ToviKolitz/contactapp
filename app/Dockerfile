@@ -3,7 +3,7 @@ FROM python:3.6-alpine
 
 # Installing packages
 RUN apk add --update
-
+RUN echo blabla
 COPY ./requirements.txt /app/requirements.txt
 
 # # Defining working directory and adding source code
