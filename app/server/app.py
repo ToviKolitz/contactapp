@@ -42,7 +42,7 @@ def create_app(test_config=None):
     try:
         mongodb_client = PyMongo(app)
         db = mongodb_client.db
-        logger.info("Succesfully connected to MongoDB!!")
+        logger.info("Succesfully connected to MongoDB!")
     except Exception as e:
         logger.error("Could not connect to Mongo.\nException seen:" + str(e))
 
