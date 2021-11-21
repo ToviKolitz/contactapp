@@ -14,12 +14,12 @@ pipeline{
         stage('Unit test'){
             steps {
                 sh '''
-                    chmod +x ./wait-for-docker-compose.sh
-                    ./wait-for-docker-compose.sh 60
+                    chmod +x ./scripts/wait-for-docker-compose.sh
+                    ./scripts/wait-for-docker-compose.sh 60
                  
                     docker exec flask pytest -v > testResult.txt 
-                    chmod +x unit-test.sh
-                    ./unit-test.sh
+                    chmod +x ./scripts/unit-test.sh
+                    ./scripts/unit-test.sh
 
                  '''
             }
@@ -28,8 +28,8 @@ pipeline{
             steps {
                 sh '''
 
-                    chmod +x ./e2e-test.sh
-                    ./e2e-test.sh
+                    chmod +x ./scripts/e2e-test.sh
+                    ./scripts/e2e-test.sh
 
                  '''
             }
@@ -37,8 +37,8 @@ pipeline{
         stage('Tag and Publish'){
             steps{
                 sh '''
-                    chmod +x tag.sh
-                    ./tag.sh
+                    chmod +x ./scripts/tagandpublish.sh
+                    ./scripts/tagandpublish.sh
                 '''
             }
         }
@@ -46,8 +46,7 @@ pipeline{
     post{
         cleanup{
             sh '''
-                chmod +x cleanUp.sh
-                ./cleanUp.sh
+                docker-compose down -v
             '''
             emailext (
                 subject: "Status of  ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER} ",
